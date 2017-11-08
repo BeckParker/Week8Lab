@@ -17,7 +17,7 @@ USE NotesDB;
     PRIMARY KEY (username)
 );*/
 
-CREATE TABLE Notes(
+CREATE TABLE Note(
     noteId INT NOT NULL AUTO_INCREMENT,
     dateCreated DATETIME NOT NULL,
     contents VARCHAR(10000) CHARACTER SET utf8 NOT NULL,

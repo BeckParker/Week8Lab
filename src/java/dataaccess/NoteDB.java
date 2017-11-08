@@ -49,11 +49,11 @@ public class NoteDB {
         EntityManager em = DBUtil.getEmFactory().createEntityManager();
         
         try {
-            List<Note> note = em.createNamedQuery("User.findAll", Note.class).getResultList();
-            return note;
+            List<Note> notes = em.createNamedQuery("Note.findAll", Note.class).getResultList();
+            return notes;
         } catch (Exception ex) {
-            Logger.getLogger(NoteDB.class.getName()).log(Level.SEVERE, "Cannot read users", ex);
-            throw new NotesDBException("Error getting Users");
+            Logger.getLogger(NoteDB.class.getName()).log(Level.SEVERE, "Cannot read notes", ex);
+            throw new NotesDBException("Error getting Notes");
         } finally {
             em.close();
         }

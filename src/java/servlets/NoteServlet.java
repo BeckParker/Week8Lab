@@ -9,6 +9,7 @@ import businesslogic.NoteService;
 import domainmodel.Note;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -61,7 +62,7 @@ public class NoteServlet extends HttpServlet {
                 }
             } else if (action.equals("deleteNote")) {
                 String strId = request.getParameter("id");
-                int id = Integer.parseInt(strId);
+                Integer id = Integer.parseInt(strId);
                 try {
                     ns.deleteNote(id);
                 } catch (Exception ex) {
@@ -69,7 +70,7 @@ public class NoteServlet extends HttpServlet {
                 }
             } else if (action.equals("updateNote")) {
                 String strId = request.getParameter("id");
-                int id = Integer.parseInt(strId);
+                Integer id = Integer.parseInt(strId);
                 try {
                     ns.updateNote(id, contents);
                 } catch (Exception ex) {
@@ -83,12 +84,12 @@ public class NoteServlet extends HttpServlet {
     
     private void displayAllNotes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Note> notes = null;
+        List<Note> notes = null;
         //String selectedNote = null;
         
         NoteService noteService = new NoteService();
         try {
-            notes = (ArrayList<Note>) noteService.getAllNotes();
+            notes = noteService.getAllNotes();
         } catch (Exception ex) {
             Logger.getLogger(NoteServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
